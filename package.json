@@ -1,0 +1,42 @@
+{
+  "name": "monorepo-template",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "clean": "rimraf **/node_modules",
+    "lint": "eslint --ext packages/**/*.{js,ts,vue}",
+    "lint-fix": "eslint --fix --ext packages/**/*.{js,ts,vue}",
+    "prepare": "husky install && echo 'export PATH=\"/usr/local/bin/:$PATH\"' >> ~/.huskyrc"
+  },
+  "keywords": [
+    "pnpm",
+    "monorepo",
+    "husky"
+  ],
+  "author": "Kitano",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/config-conventional": "^17.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "commitlint": "^17.2.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-define-config": "^1.12.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.3"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{vue,js,ts,jsx,tsx,md,json}": "eslint --fix"
+  }
+}
